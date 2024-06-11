@@ -1,0 +1,50 @@
+<base:PageBase xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OpenSale.UI.ViewModels.Controls.Items"
+             xmlns:base="using:OpenSale.UI.Common"
+             x:TypeArguments="vm:ProductVerticalCardViewModel"
+             x:DataType="vm:ProductVerticalCardViewModel"
+             Padding="10"
+             mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="500"
+             x:Class="OpenSale.UI.Views.Controls.Items.ProductVerticalCardView">
+    
+  <Border CornerRadius="8" MinWidth="275" MaxWidth="325" Background="Transparent" >
+    <Border.Styles>
+      <Style Selector="Border">
+        <Setter Property="BoxShadow" Value="0 2 6 -1 LightGray, 0 2 6 -2 LightGray" />
+        <Style Selector="^:pointerover">
+          <Setter Property="BoxShadow" Value="0 2 6 0 LightGray" />
+        </Style>
+      </Style>
+    </Border.Styles>
+    <Border.Transitions>
+      <Transitions>
+        <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.2" />
+        </Transitions>
+    </Border.Transitions>
+    <Border Padding="10" ClipToBounds="True">
+      <Grid RowDefinitions="200, *">
+        <Image Margin="0 10 0 0" Source="/Assets/samsung-galaxy-s20-.jpg" />
+        <StackPanel Grid.Row="1" Margin="10">
+          <TextBlock FontWeight="Bold" FontSize="18" Text="Samsung S20"/>
+          <TextBlock Margin="0 10 0 0" FontSize="14" Foreground="rgb(107, 114, 128)" Text="Last Stocked: 2023-05-12"/>
+          <TextBlock FontSize="14" Foreground="rgb(107, 114, 128)" Text="Stock: 25"/>
+
+          <TextBlock Margin="0 10 0 0" FontSize="14" FontWeight="Bold" Text="Price: $99.99"/>
+
+          <ItemsControl Margin="0 10 0 0" ItemsSource="{Binding Path=Tags}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal">
+                </WrapPanel>
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+          </ItemsControl>
+        </StackPanel>
+      </Grid>
+
+    </Border>
+  </Border>
+</base:PageBase>

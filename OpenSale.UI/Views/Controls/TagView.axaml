@@ -1,0 +1,14 @@
+<base:PageBase xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="50" d:DesignHeight="50"
+             xmlns:vm="using:OpenSale.UI.ViewModels.Controls"
+             xmlns:base="using:OpenSale.UI.Common"
+             x:TypeArguments="vm:TagViewModel"
+             x:DataType="vm:TagViewModel"
+             x:Class="OpenSale.UI.Views.Controls.TagView">
+  <Border Padding="10 5" Margin="0 0 4 5" Height="25" CornerRadius="100" Background="#e5e7eb" BoxShadow="0 0 0 0 transparent">
+    <TextBlock FontSize="12" VerticalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
+  </Border>
+</base:PageBase>

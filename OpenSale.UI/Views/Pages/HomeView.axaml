@@ -1,0 +1,31 @@
+<base:PageBase xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:base="using:OpenSale.UI.Common"
+             xmlns:vm="using:OpenSale.UI.ViewModels.Pages"
+             xmlns:cvm="using:OpenSale.UI.ViewModels.Controls.Items"
+             x:TypeArguments="vm:HomeViewModel"
+             x:DataType="vm:HomeViewModel"
+             x:Class="OpenSale.UI.Views.Pages.HomeView">
+  <Design.DataContext>
+    <vm:HomeViewModel />
+  </Design.DataContext>
+
+  <ItemsControl ItemsSource="{Binding Path=List}">
+    <ItemsControl.ItemsPanel>
+      <ItemsPanelTemplate>
+        <WrapPanel Orientation="Horizontal">
+        </WrapPanel>
+      </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+    <ItemsControl.ItemTemplate>
+      <DataTemplate x:DataType="cvm:ProductVerticalCardViewModel">
+      <Border>
+        <UserControl Content="{Binding}" />
+      </Border>
+      </DataTemplate>
+    </ItemsControl.ItemTemplate>
+  </ItemsControl>
+</base:PageBase>

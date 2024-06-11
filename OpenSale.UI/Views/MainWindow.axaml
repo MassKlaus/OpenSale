@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:OpenSale.UI.ViewModels"
+        xmlns:dm="using:OpenSale.UI.DesignModels"
+        xmlns:cvm="using:OpenSale.UI.ViewModels.Controls.Navigation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="OpenSale.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="OpenSale.UI">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+  <DockPanel>
+    <Grid ColumnDefinitions="200,*">
+      <ItemsControl HorizontalAlignment="Stretch" Background="#111827" Padding="10" ItemsSource="{Binding Path=Navigations}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="cvm:NavigationButtonViewModel">
+            <Button  Command="{Binding Path=NavigateCommand}" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch">
+              <Button.Template>
+                <ControlTemplate>
+                  <Border Margin="0 8 0 0" CornerRadius="10" ClipToBounds="True">
+                    <Grid Height="35" Classes.Selected="{Binding Path=Selected}" Background="Transparent"  ColumnDefinitions="30,*">
+                      <Grid.Styles>
+                        <Style Selector="Grid:pointerover">
+                          <Setter Property="Background" Value="#1f2937"/>
+                        </Style>
+                        <Style Selector="Grid.Selected TextBlock">
+                          <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                      </Grid.Styles>
+                      <Border Padding="5">
+                        <Svg VerticalAlignment="Center" Path="{Binding Path=Icon}" Css="* { fill: #FFFFFF; }" />
+                      </Border>
+                      <TextBlock Grid.Column="1" Foreground="White" VerticalAlignment="Center"  Text="{Binding Path=Name}" />
+                    </Grid>
+                  </Border>
+                </ControlTemplate>
+              </Button.Template>
+            </Button>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+
+      <ScrollViewer Grid.Column="1">
+        <UserControl Padding="10" Content="{Binding Path=CurrentPage}"/>
+      </ScrollViewer>
+    </Grid>
+  </DockPanel>
+
+</Window>
